@@ -26,11 +26,6 @@ with st.sidebar:
     - LangChain
     - FAISS for vector storage and retrieval
     - LLMs to generate context-aware responses from your PDFs
-
-    ## How to Use
-    1. Upload your PDF(s) in the app.
-    2. The system indexes the content using FAISS.
-    3. Ask questions and get precise answers from the PDF content.
     ''')
     
     add_vertical_space(3)
