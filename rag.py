@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from streamlit_extras.add_vertical_space import add_vertical_space
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
-from langchain.chains.question_answering import load_qa_chain
+from langchain.chains import load_qa_chain
 import os
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -69,7 +69,6 @@ def main():
 
             # Create vector store
             try:
-                # Try to load from FAISS index if it exists
                 if os.path.exists(f"{store_name}.faiss"):
                     VectorStore = FAISS.load_local(
                         f"{store_name}",
@@ -77,9 +76,7 @@ def main():
                     )
                     st.info('Embeddings Loaded from Disk')
                 else:
-                    # Create new vector store
                     VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
-                    # Save the FAISS index
                     VectorStore.save_local(f"{store_name}")
                     st.success('Embeddings Computed and Saved')
             except Exception as e:
@@ -103,7 +100,7 @@ def main():
                         
                         chain = load_qa_chain(llm=llm, chain_type="stuff")
                         
-                        response = chain.run(input_documents=docs, question=query)
+                        response = chain.invoke({"input_documents": docs, "question": query})["output_text"]
                         
                         # Display response
                         st.write("Answer:")
