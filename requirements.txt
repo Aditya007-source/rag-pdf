@@ -1,11 +1,12 @@
-streamlit
-PyPDF2
-python-dotenv
-streamlit-extras
-langchain==0.0.301
-faiss-cpu
-google-generativeai
-langchain-google-genai
-langchain-community
-langchain-text-splitters
-faiss-cpu
+# Core dependencies - Python 3.12 compatible
+streamlit==1.57.0
+PyPDF2==3.0.1
+python-dotenv==1.2.2
+
+# LangChain packages for RAG functionality
+langchain-community==0.4.1
+langchain-text-splitters==1.1.2
+langchain-google-genai==4.2.2
+
+# Vector database for semantic search
+faiss-cpu==1.13.2
