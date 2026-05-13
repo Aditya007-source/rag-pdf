@@ -3,7 +3,7 @@ from PyPDF2 import PdfReader
 from dotenv import load_dotenv
 from streamlit_extras.add_vertical_space import add_vertical_space
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 from langchain.chains.question_answering import load_qa_chain
 import os
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
